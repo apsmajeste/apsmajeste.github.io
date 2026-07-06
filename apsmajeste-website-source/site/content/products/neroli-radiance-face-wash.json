@@ -1,0 +1,33 @@
+{
+  "name": "Neroli Radiance Face Wash",
+  "category": "Face Wash",
+  "categorySlug": "cleansers",
+  "price": 58,
+  "size": "150 ml",
+  "tag": "New",
+  "bg": "sage",
+  "short": "A gentle gel face wash that lifts impurities and excess oil without stripping, leaving skin balanced and softly luminous.",
+  "description": "A gentle gel-to-foam face wash formulated for daily use on all skin types. Neroli and green tea extracts calm and brighten, while a mild amino-acid surfactant derived from coconut lifts impurities, makeup, and excess oil without disrupting the skin’s moisture barrier. Skin feels clean, soft, and comfortably balanced — never tight or squeaky. Subtle neroli aroma turns a daily habit into a small ritual.",
+  "benefits": [
+    "pH-balanced (5.5) to protect the skin’s acid mantle",
+    "Removes makeup, SPF, and excess oil in one cleanse",
+    "Sulfate-free, soap-free, and non-stripping",
+    "Suitable for morning and evening use on all skin types"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Cocamidopropyl Betaine (Coconut-derived)",
+    "Sodium Lauroyl Glutamate (Amino-acid surfactant)",
+    "Citrus Aurantium (Neroli) Flower Water",
+    "Camellia Sinensis (Green Tea) Leaf Extract",
+    "Glycerin",
+    "Panthenol (Provitamin B5)"
+  ],
+  "usage": "Massage a pea-sized amount onto damp skin in circular motions for 30 seconds. Rinse thoroughly with lukewarm water. Use morning and evening. Follow with serum and moisturizer.",
+  "pairings": [
+    "rose-damascena-elixir",
+    "hydra-veil-moisturizer"
+  ],
+  "rating": 4.8,
+  "reviews": 389
+}

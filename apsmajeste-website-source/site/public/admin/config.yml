@@ -1,0 +1,164 @@
+# ============================================================
+# Decap CMS configuration for APS MAJESTE
+# ============================================================
+# Setup:
+#   1. Create a GitHub OAuth App:
+#      GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
+#        - Application name: APS MAJESTE Admin
+#        - Homepage URL: https://<your-username>.github.io/<repo>/
+#        - Authorization callback URL: https://<your-username>.github.io/<repo>/admin/
+#   2. Copy the Client ID and paste it below as `app_id`.
+#   3. Set `repo` to your GitHub repo path (e.g. "your-username/apsmajeste").
+#   4. Visit /admin/ and sign in with GitHub.
+#
+# How saves work:
+#   Every product edit commits to the `main` branch of your repo.
+#   This triggers the GitHub Actions workflow (.github/workflows/deploy.yml),
+#   which rebuilds the site and deploys to GitHub Pages. Live in ~30s.
+# ============================================================
+
+backend:
+  name: github
+  repo: your-username/apsmajeste           # ← CHANGE THIS to your repo
+  branch: main
+  base_url: https://github.com
+  auth_endpoint: login/oauth/authorize
+  app_id: Iv1.xxxxxxxxxxxxxxxx             # ← CHANGE THIS to your OAuth App Client ID
+  auth_type: pkce                          # PKCE = no proxy server needed
+
+# Site URL used for canonical links in the CMS UI
+site_url: https://your-username.github.io/apsmajeste  # ← CHANGE THIS
+
+# Show a publish/preview workflow
+publish_mode: editorial_workflow
+
+# Media (product images) stored in the repo
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# ============================================================
+# Collections
+# ============================================================
+collections:
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "content/products"
+    format: "json"
+    extension: "json"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{name}} · {{category}} · ${{price}} · {{size}}"
+    sortable_fields: [name, category, price]
+    view_filters:
+      - label: "Bestsellers"
+        field: tag
+        pattern: "Bestseller"
+      - label: "New arrivals"
+        field: tag
+        pattern: "New"
+      - label: "Fragrances"
+        field: categorySlug
+        pattern: "fragrances"
+    fields:
+      # Basic info
+      - { name: "name", label: "Product Name", widget: "string", hint: "Full display name, e.g. Rose Damascena Elixir" }
+      - { name: "category", label: "Category (display)", widget: "string", hint: "Human-readable, e.g. Serum, Face Wash, Perfume" }
+      - name: "categorySlug"
+        label: "Category (filter)"
+        widget: "select"
+        hint: "Used by the filter chips on the products page"
+        options:
+          - { label: "Serums", value: "serums" }
+          - { label: "Facial Oils", value: "oils" }
+          - { label: "Face Wash & Cleansers", value: "cleansers" }
+          - { label: "Moisturizers", value: "moisturizers" }
+          - { label: "Perfumes & Fragrances", value: "fragrances" }
+          - { label: "Body", value: "body" }
+      - { name: "price", label: "Price (USD)", widget: "number", value_type: "int", min: 0, step: 1, hint: "Whole dollars, e.g. 128" }
+      - { name: "size", label: "Size", widget: "string", hint: "e.g. 30 ml, 50 ml, 150 ml" }
+      - name: "tag"
+        label: "Badge / Tag"
+        widget: "select"
+        required: false
+        default: ""
+        options:
+          - { label: "None", value: "" }
+          - { label: "Bestseller", value: "Bestseller" }
+          - { label: "New", value: "New" }
+          - { label: "Signature", value: "Signature" }
+      - name: "bg"
+        label: "Card color theme"
+        widget: "select"
+        hint: "Visual gradient used on the product card and detail page"
+        options:
+          - { label: "Rose (pink)", value: "rose" }
+          - { label: "Amber (gold)", value: "amber" }
+          - { label: "Sage (green)", value: "sage" }
+          - { label: "Cream (warm)", value: "cream" }
+          - { label: "Noir (dark)", value: "noir" }
+          - { label: "Blush (soft pink)", value: "blush" }
+
+      # Descriptions
+      - { name: "short", label: "Short description", widget: "text", hint: "One-line summary shown on the product card (max ~160 chars)" }
+      - { name: "description", label: "Full description", widget: "text", hint: "Full marketing copy shown on the product detail page" }
+
+      # Lists
+      - name: "benefits"
+        label: "Benefits"
+        widget: "list"
+        required: true
+        min: 1
+        hint: "One benefit per row. Shown as bullet points on the product detail page."
+      - name: "ingredients"
+        label: "Key Ingredients"
+        widget: "list"
+        required: true
+        min: 1
+        hint: "One ingredient per row. Displayed as a comma-separated list."
+
+      # Usage
+      - { name: "usage", label: "How to use", widget: "text", hint: "Application instructions shown on the detail page" }
+
+      # Relations — pair with other products
+      - name: "pairings"
+        label: "Pairs with"
+        widget: "relation"
+        collection: "products"
+        value_field: "{{slug}}"
+        search_fields: ["name"]
+        display_fields: ["name"]
+        multiple: true
+        required: false
+        hint: "Select other products that complement this one (shown in the 'Complete your ritual' section)"
+
+      # Ratings (auto-filled from your review provider — edit only if needed)
+      - { name: "rating", label: "Rating (0–5)", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1, default: 4.8 }
+      - { name: "reviews", label: "Review count", widget: "number", value_type: "int", min: 0, step: 1, default: 0 }
+
+      # Optional product photo
+      - { name: "image", label: "Product photo", widget: "image", required: false, hint: "Optional — if omitted, a colored gradient placeholder is used" }
+
+  # Static page content (optional — lets you edit page copy without code)
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/settings/site.json"
+        name: "site"
+        label: "Brand & Contact Info"
+        fields:
+          - { name: "brand", label: "Brand name", widget: "string" }
+          - { name: "tagline", label: "Tagline", widget: "string" }
+          - { name: "email", label: "Contact email", widget: "string" }
+          - { name: "phone", label: "Contact phone", widget: "string" }
+          - { name: "addressLine1", label: "Address line 1", widget: "string" }
+          - { name: "addressCity", label: "City", widget: "string" }
+          - { name: "addressRegion", label: "State / Region", widget: "string" }
+          - { name: "addressPostalCode", label: "Postal code", widget: "string" }
+          - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
+          - { name: "pinterestUrl", label: "Pinterest URL", widget: "string", required: false }
+          - { name: "tiktokUrl", label: "TikTok URL", widget: "string", required: false }

@@ -1,6 +1,6 @@
 # APS MAJESTE — Personal Care Brand Website
 
-A modern, fast, static website for **APS MAJESTE**, a fictional premium botanical skincare and fragrance maison. Built with HTML5, CSS3, vanilla JavaScript, and Vite — no frameworks, no backend, no database.
+A modern, fast, static website for **APS MAJESTE**, a premium personal care brand offering botanical skincare, face wash, and perfumes. Built with HTML5, CSS3, vanilla JavaScript, and Vite — no frameworks, no backend, no database.
 
 > **Design ethos:** clean, modern, luxury. Mobile-first. Accessible. Optimized for Lighthouse > 95.
 
@@ -61,7 +61,17 @@ apsmajeste/
 │   ├── favicon.svg
 │   ├── robots.txt
 │   ├── sitemap.xml
-│   └── images/                 # (Add product/lifestyle imagery here)
+│   ├── images/                 # (Add product/lifestyle imagery here)
+│   └── admin/                  # Decap CMS admin UI
+│       ├── index.html          # Loads Decap CMS from CDN
+│       └── config.yml          # CMS configuration (collections, fields)
+│
+├── content/                    # Editable content (managed by Decap CMS)
+│   ├── products/               # One JSON file per product
+│   │   ├── rose-damascena-elixir.json
+│   │   └── ... (7 total)
+│   └── settings/
+│       └── site.json           # Brand contact info, social links
 │
 └── src/
     ├── styles/
@@ -81,7 +91,7 @@ apsmajeste/
     │
     └── data/
         ├── site.js             # Brand info, nav, footer links
-        └── products.js         # Product catalog (single source of truth)
+        └── products.js         # Reads from /content/products/*.json at build time
 ```
 
 ---
@@ -151,8 +161,12 @@ Header · Navigation (desktop + mobile) · Hero · Product Cards · Testimonials
 ### Change brand name, email, social links
 Edit `src/data/site.js`. The header, footer, contact page, and structured data all read from this file.
 
+> 💡 **Easier:** Use the admin UI at `/admin/` → "Site Settings" to edit brand contact info without touching code. See [Admin (Decap CMS)](#admin-decap-cms) below.
+
 ### Add or edit products
-Edit `src/data/products.js`. Each product needs: `slug`, `name`, `category`, `categorySlug`, `price`, `size`, `tag`, `bg` (one of: `rose`, `amber`, `sage`, `cream`, `noir`, `blush`), `short`, `description`, `benefits`, `ingredients`, `usage`, `pairings`, `rating`, `reviews`. The products page, product detail page, and sitemap all read from this file.
+**Option A — Use the admin UI (recommended):** Go to `/admin/` → "Products" → click any product to edit, or "New Product" to add one. Every save commits to GitHub and auto-deploys. See [Admin (Decap CMS)](#admin-decap-cms) below.
+
+**Option B — Edit JSON files directly:** Each product is a single JSON file at `content/products/<slug>.json`. Fields: `name`, `category`, `categorySlug` (one of: `serums`, `oils`, `cleansers`, `moisturizers`, `fragrances`, `body`), `price`, `size`, `tag` (one of: `""`, `"Bestseller"`, `"New"`, `"Signature"`), `bg` (one of: `rose`, `amber`, `sage`, `cream`, `noir`, `blush`), `short`, `description`, `benefits` (array of strings), `ingredients` (array of strings), `usage`, `pairings` (array of slugs), `rating`, `reviews`. The slug is derived from the filename.
 
 > ⚠️ When you add a product, also add its URL to `public/sitemap.xml`.
 
@@ -170,7 +184,88 @@ Replace `<div class="ph product-bg--rose">` blocks in `src/js/products.js` and `
 ```html
 <img src="/images/your-image.jpg" alt="Rose Damascena Elixir bottle" loading="lazy" width="800" height="800">
 ```
-And drop the image files into `public/images/`.
+And drop the image files into `public/images/`. You can also upload images via the admin UI — they'll be stored in `public/images/uploads/`.
+
+---
+
+## Admin (Decap CMS)
+
+A full admin UI is built in at **`/admin/`**. It lets you add, edit, and delete products through a form-based interface — no code editing required. Every save commits directly to your GitHub repo and triggers a Pages rebuild via the workflow in `.github/workflows/deploy.yml`.
+
+### How it works
+
+```
+Browser  →  /admin/  →  Decap CMS UI (from CDN)
+                            ↓
+                       GitHub OAuth (PKCE, no proxy server)
+                            ↓
+                       Commits JSON to content/products/<slug>.json
+                            ↓
+                       GitHub Actions triggers
+                            ↓
+                       Vite build → GitHub Pages
+                            ↓
+                       Live in ~30s
+```
+
+### One-time setup (5 minutes)
+
+**1. Create a GitHub OAuth App**
+
+- Go to: GitHub → **Settings → Developer settings → OAuth Apps → New OAuth App**
+- Fill in:
+  - **Application name:** `APS MAJESTE Admin`
+  - **Homepage URL:** `https://<your-username>.github.io/<repo>/`
+  - **Authorization callback URL:** `https://<your-username>.github.io/<repo>/admin/`
+- Click **Register**
+- Copy the **Client ID** (starts with `Iv1.`)
+
+**2. Edit `public/admin/config.yml`**
+
+Replace these two placeholder values:
+
+```yaml
+backend:
+  name: github
+  repo: your-username/apsmajeste           # ← your GitHub username/repo
+  app_id: Iv1.xxxxxxxxxxxxxxxx             # ← your OAuth App Client ID
+  ...
+
+site_url: https://your-username.github.io/apsmajeste  # ← your live URL
+```
+
+**3. Commit and push**
+
+```bash
+git add public/admin/config.yml
+git commit -m "Configure Decap CMS"
+git push
+```
+
+**4. Visit `/admin/`** and click **"Login with GitHub"**. Authorize the OAuth app when prompted.
+
+That's it. You can now:
+- ✏️ Edit any of the 7 products through form fields (name, price, description, benefits, ingredients, etc.)
+- ➕ Add new products (auto-generates a new JSON file + sitemap URL)
+- 🗑️ Delete products
+- 📸 Upload product images (stored in `public/images/uploads/`)
+- 🔗 Set product pairings via a searchable dropdown (relation field)
+- 📝 Edit brand contact info, social links, address (Site Settings collection)
+- 📋 Use draft → review → publish workflow (`publish_mode: editorial_workflow`)
+
+### Multi-user access
+
+Anyone you grant write access to your GitHub repo can use the admin. To add a content editor:
+1. GitHub → your repo → **Settings → Collaborators → Add people**
+2. They visit `/admin/`, log in with their own GitHub account, and can start editing
+
+### Troubleshooting
+
+- **"Login with GitHub" button does nothing** → Check that `app_id` in `config.yml` matches your OAuth App Client ID, and the callback URL in the OAuth App is exactly `https://<user>.github.io/<repo>/admin/`
+- **404 after login redirect** → Your OAuth callback URL doesn't match the deployed URL. Update both the OAuth App on GitHub and `site_url` in `config.yml`.
+- **Edits don't appear on the site** → Check the **Actions** tab in your GitHub repo — the workflow should be running. If it fails, check the build log.
+- **"Cannot find module" build error after editing** → Make sure your JSON files are valid (no trailing commas, no comments). Validate at jsonlint.com.
+- **Want to disable the admin temporarily?** → Delete `public/admin/` and the link is gone.
 
 ---
 
@@ -192,18 +287,28 @@ The site builds to a static `/dist` folder. Deploy it anywhere that serves stati
 4. Output directory: `dist` (auto)
 5. Done
 
-### GitHub Pages
-1. Push to a repo
-2. Settings → Pages → Source → GitHub Actions (recommended)
-3. Add a workflow that runs `npm run build` and uploads `/dist`
+### GitHub Pages (recommended — zero config)
 
-**For GitHub Pages project sites** (e.g. `username.github.io/repo-name/`), edit `vite.config.js` and change `base: '/'` to `base: '/repo-name/'` before building.
+A ready-to-use workflow is included at `.github/workflows/deploy.yml`. It auto-detects whether your repo is a **project site** (`<user>.github.io/<repo>/`) or a **user/org site** (`<user>.github.io/`) and sets Vite's `base` path accordingly — no manual config needed.
+
+**One-time setup:**
+1. Push this folder to a GitHub repo (e.g. `your-username/apsmajeste`)
+2. In GitHub: **Settings → Pages → Build and deployment → Source → GitHub Actions**
+3. Push to `main` (or `master`) — the workflow runs automatically
+
+**Your site goes live at:**
+- Project repo (`apsmajeste`): `https://<your-username>.github.io/apsmajeste/`
+- User site (`<your-username>.github.io`): `https://<your-username>.github.io/`
+
+The workflow also runs a build check on pull requests (without deploying) so you can catch issues before merging.
+
+**Manual trigger:** Go to **Actions → Deploy to GitHub Pages → Run workflow** to deploy on demand.
 
 ---
 
 ## Notes
 
-- This is a **demo brand** — APS MAJESTE, founded 2019, NYC + Provence. Replace with your real brand info in `src/data/site.js` and the HTML page metadata before going live.
+- The demo content uses a placeholder domain (`apsmajeste.example.com`), email (`concierge@apsmajeste.example.com`), and social handles. Replace these with your real values in `src/data/site.js` before going live.
 - The `og:image` references `https://apsmajeste.example.com/images/og-cover.jpg` — create and upload this 1200×630 image before launch.
 - Forms (newsletter, contact, add-to-bag) are front-end only and show a toast on submit. Wire them to your backend, Formspree, Netlify Forms, or Klaviyo when ready.
 - The product imagery uses CSS gradient placeholders. Drop real product photography into `public/images/` and swap the `<div class="ph …">` blocks in `src/js/products.js` and `src/js/product-detail.js` for `<img loading="lazy">` tags.

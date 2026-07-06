@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /
 Disallow: /404.html
+Disallow: /admin/
 
 # Sitemap location
 Sitemap: https://apsmajeste.example.com/sitemap.xml

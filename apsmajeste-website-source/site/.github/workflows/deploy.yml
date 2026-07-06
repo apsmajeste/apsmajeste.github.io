@@ -1,0 +1,100 @@
+# Build and deploy APS MAJESTE to GitHub Pages
+#
+# How it works:
+#   1. Triggers on every push to `main` (or `master`), manual dispatch, and PRs (build-only).
+#   2. Reads the repo name to auto-set Vite's `base` path so assets resolve correctly
+#      under https://<user>.github.io/<repo>/ — no manual config needed.
+#   3. Builds the static site with `npm run build`.
+#   4. Uploads the `/dist` folder as an artifact.
+#   5. Deploys the artifact to GitHub Pages.
+#
+# One-time setup (do this in your GitHub repo):
+#   Settings → Pages → Build and deployment → Source → GitHub Actions
+#
+# That's it. Push to main and your site goes live at:
+#   https://<your-username>.github.io/<your-repo-name>/
+#
+# For a user/org site (repo named <username>.github.io), the URL is just:
+#   https://<your-username>.github.io/
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+  pull_request:
+    # Build-only on PRs — do not deploy
+    branches: [main, master]
+
+# Permissions required for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment — skip queued builds, cancel in-progress ones
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Configure base path
+        id: base
+        working-directory: site
+        run: |
+          # For user/org sites (repo named <user>.github.io), base = "/"
+          # For project sites (any other repo name), base = "/<repo-name>/"
+          REPO="${GITHUB_REPOSITORY##*/}"
+          if [[ "$REPO" == *.github.io ]]; then
+            echo "base=/" >> "$GITHUB_OUTPUT"
+            echo "Detected user/org site → base = '/'"
+          else
+            echo "base=/${REPO}/" >> "$GITHUB_OUTPUT"
+            echo "Detected project site → base = '/${REPO}/'"
+          fi
+
+      - name: Build with Vite
+        working-directory: site
+        env:
+          # Pass the computed base path to Vite at build time
+          VITE_BASE: ${{ steps.base.outputs.base }}
+        run: npm run build -- --base "$VITE_BASE"
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+          name: github-pages
+
+  deploy:
+    name: Deploy to Pages
+    # Only deploy on push to main/master — skip on PRs
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
