@@ -1,28 +1,26 @@
 # ============================================================
 # Decap CMS configuration for APS MAJESTE
 # ============================================================
-# Setup:
-#   1. Create a GitHub OAuth App:
-#      GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
-#        - Application name: APS MAJESTE Admin
-#        - Homepage URL: https://apsmajeste.github.io/
-#        - Authorization callback URL: https://apsmajeste.github.io/admin/
-#   2. Copy the Client ID and paste it below as `app_id`.
-#   3. Set `repo` to your GitHub repo path.
-#   4. Visit /admin/ and sign in with GitHub.
-#
-# How saves work:
-#   Every product edit commits to the `main` branch of your repo.
-#   This triggers the GitHub Actions workflow (.github/workflows/deploy.yml),
-#   which rebuilds the site and deploys to GitHub Pages. Live in ~30s.
+# Authentication: DecapBridge (free OAuth proxy for GitHub Pages)
+#   1. Sign up at https://decapbridge.com
+#   2. Add a site with:
+#      - Git provider: GitHub
+#      - Git repository: apsmajeste/apsmajeste.github.io
+#      - Git access token: create at https://github.com/settings/tokens
+#        (fine-grained, Contents read+write, Pull requests read+write)
+#      - Decap CMS login URL: https://apsmajeste.github.io/admin/index.html
+#      - Auth type: Classic
+#   3. Copy the generated base_url and app_id below
+#   4. Visit https://apsmajeste.github.io/admin/ and sign in
 # ============================================================
 
 backend:
   name: github
   repo: apsmajeste/apsmajeste.github.io
   branch: main
-  app_id: Ov23liYTkEGWOA2tnMM5
-  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: auth
+  app_id: CHANGE_ME_FROM_DECAPBRIDGE_DASHBOARD
 
 # Site URL used for canonical links in the CMS UI
 site_url: https://apsmajeste.github.io
