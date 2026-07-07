@@ -18,9 +18,10 @@
   --color-text-inverse: #faf7f2;   /* text on dark */
   --color-text-inverse-muted: #b3a99a;
 
-  --color-accent: #b8935a;         /* muted gold */
-  --color-accent-hover: #a07e4a;
+  --color-accent: #8a6a3f;         /* darker gold — passes WCAG AA on white (4.77:1) */
+  --color-accent-hover: #74572f;   /* even darker for hover */
   --color-accent-soft: #d9c4a0;
+  --color-accent-light: #c9a972;   /* lighter gold for use on dark backgrounds (passes AA on espresso) */
 
   --color-border: #e5ddd0;
   --color-border-dark: #3a322c;

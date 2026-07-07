@@ -5,9 +5,10 @@
 
 import { mountComponents } from './components.js';
 import { initNav } from './nav.js';
-import { initReveal, initNewsletter, initFaq, initContactForm } from './ui.js';
+import { initReveal, initNewsletter, initFaq, initContactForm, initBackToTop } from './ui.js';
 import { renderProducts, renderFeatured } from './products.js';
 import { renderProductDetail } from './product-detail.js';
+import { initHeroSlider } from './slider.js';
 
 function init() {
   // 1. Mount shared header/footer (depends on DOM mount points)
@@ -26,6 +27,8 @@ function init() {
   initNewsletter();
   initFaq();
   initContactForm();
+  initHeroSlider();
+  initBackToTop();
 }
 
 if (document.readyState === 'loading') {

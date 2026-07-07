@@ -22,9 +22,36 @@ export function renderProductDetail() {
 
   let slug = getQueryId();
   let product = getProduct(slug);
+
+  // If no slug or product not found, show "not found" state instead of silently
+  // falling back to a different product (which is confusing and a SEO risk).
   if (!product) {
-    product = PRODUCTS[0];
-    slug = product.slug;
+    document.title = 'Product Not Found | APS MAJESTE';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', 'The product you were looking for could not be found. Browse our full collection of face washes and eau de parfums.');
+
+    // Update breadcrumb
+    const crumb = document.querySelector('[data-product-breadcrumb]');
+    if (crumb) crumb.textContent = 'Not Found';
+
+    // Hide pairings and reviews sections (they have nothing to show)
+    const pairSection = document.querySelector('[data-product-pairings]')?.closest('section');
+    if (pairSection) pairSection.style.display = 'none';
+    const reviewsSection = document.querySelector('[data-product-reviews]')?.closest('section');
+    if (reviewsSection) reviewsSection.style.display = 'none';
+
+    root.innerHTML = `
+      <div class="product-detail__not-found">
+        <span class="eyebrow">404</span>
+        <h1 class="product-detail__title">Product not found</h1>
+        <p class="product-detail__desc">We couldn't find the product you were looking for. It may have been moved, renamed, or is no longer available.</p>
+        <div class="product-detail__actions">
+          <a href="${link('products.html')}" class="btn btn--primary btn--lg">Browse All Products</a>
+          <a href="${link('index.html')}" class="btn btn--ghost btn--lg">Return Home</a>
+        </div>
+      </div>
+    `;
+    return;
   }
 
   // Update document title and meta
@@ -61,6 +88,13 @@ export function renderProductDetail() {
     <div>
       <span class="product-detail__subtitle">${product.category} · ${product.size}</span>
       <h1 class="product-detail__title">${product.name}</h1>
+      ${product.rating && product.reviews ? `
+        <div class="product-detail__rating">
+          <span class="product-detail__rating-stars">${'★'.repeat(Math.round(product.rating))}${'☆'.repeat(5 - Math.round(product.rating))}</span>
+          <span class="product-detail__rating-value">${product.rating.toFixed(1)}</span>
+          <span class="product-detail__rating-count">(${product.reviews} ${product.reviews === 1 ? 'review' : 'reviews'} on Amazon)</span>
+        </div>
+      ` : ''}
       <p class="product-detail__desc">${product.description}</p>
       <ul class="product-detail__list">
         ${product.benefits.map((b) => `<li>${b}</li>`).join('')}
@@ -99,9 +133,20 @@ export function renderProductDetail() {
     const pairings = [...paired, ...others].slice(0, 3);
 
     if (pairings.length) {
+      const myntraIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:14px;height:14px"><path d="M3 3h3l5 12 5-12h3v18h-3V9l-5 12-5-12v12H3z"/></svg>';
       pairRoot.innerHTML = pairings
         .map(
-          (p) => `
+          (p) => {
+            const genderBadge = p.gender
+              ? `<span class="product-card__gender product-card__gender--${p.gender}">${genderLabel(p.gender)}</span>`
+              : '';
+            const amazonBtn = p.amazonUrl
+              ? `<a href="${p.amazonUrl}" class="btn btn--primary btn--amazon" target="_blank" rel="noopener noreferrer">${AMAZON_ICON} Amazon</a>`
+              : '';
+            const myntraBtn = p.myntraUrl
+              ? `<a href="${p.myntraUrl}" class="btn btn--primary btn--myntra" target="_blank" rel="noopener noreferrer">${myntraIcon} Myntra</a>`
+              : '';
+            return `
         <article class="product-card reveal">
           <a href="${link(`product.html?id=${p.slug}`)}" class="product-card__media">
             ${p.image
@@ -110,15 +155,22 @@ export function renderProductDetail() {
             }
           </a>
           <div class="product-card__body">
-            <span class="product-card__category">${p.category}</span>
+            <div class="product-card__header">
+              <span class="product-card__category">${p.category}</span>
+              ${genderBadge}
+            </div>
             <h3 class="product-card__name"><a href="${link(`product.html?id=${p.slug}`)}">${p.name}</a></h3>
             <p class="product-card__desc">${p.short}</p>
             <div class="product-card__footer">
               <span class="product-card__size">${p.size}</span>
-              ${p.amazonUrl ? `<a href="${p.amazonUrl}" class="btn btn--primary btn--amazon" target="_blank" rel="noopener noreferrer">${AMAZON_ICON} Amazon</a>` : ''}
+              <div class="product-card__buy">
+                ${amazonBtn}
+                ${myntraBtn}
+              </div>
             </div>
           </div>
-        </article>`
+        </article>`;
+          }
         )
         .join('');
     } else {
@@ -212,6 +264,12 @@ function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+/* Gender label helper (mirrors products.js) */
+function genderLabel(gender) {
+  const map = { male: 'For Men', female: 'For Women', unisex: 'Unisex' };
+  return map[gender] || '';
 }
 
 function injectProductJsonLd(p, slug) {
