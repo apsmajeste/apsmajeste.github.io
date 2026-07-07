@@ -5,7 +5,7 @@
 
 import { mountComponents } from './components.js';
 import { initNav } from './nav.js';
-import { initReveal, initNewsletter, initFaq, initContactForm, initBackToTop } from './ui.js';
+import { initReveal, initNewsletter, initFaq, initBackToTop } from './ui.js';
 import { renderProducts, renderFeatured } from './products.js';
 import { renderProductDetail } from './product-detail.js';
 import { initHeroSlider } from './slider.js';
@@ -26,7 +26,6 @@ function init() {
   initReveal();
   initNewsletter();
   initFaq();
-  initContactForm();
   initHeroSlider();
   initBackToTop();
 }

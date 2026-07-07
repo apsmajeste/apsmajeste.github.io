@@ -8,18 +8,31 @@ export function initHeroSlider() {
   const slider = document.querySelector('[data-hero-slider]');
   if (!slider) return;
 
+  const track = slider.querySelector('[data-slider-track]');
   const slides = slider.querySelectorAll('[data-slide]');
   const dots = slider.querySelectorAll('[data-go-to]');
   const prevBtn = slider.querySelector('[data-slider-prev]');
   const nextBtn = slider.querySelector('[data-slider-next]');
 
-  if (!slides.length) return;
+  if (!slides.length || !track) return;
 
   let current = 0;
   let autoRotateTimer = null;
-  const AUTO_ROTATE_MS = 6000;
+  const AUTO_ROTATE_MS = 3000;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function updateTrackHeight() {
+    const active = slides[current];
+    if (!active) return;
+    // Temporarily make the slide visible to measure its height
+    active.style.visibility = 'hidden';
+    active.style.display = 'block';
+    const h = active.offsetHeight;
+    active.style.visibility = '';
+    active.style.display = '';
+    track.style.height = h + 'px';
+  }
 
   function goTo(index) {
     // Wrap around
@@ -35,6 +48,7 @@ export function initHeroSlider() {
     if (dots[index]) dots[index].classList.add('is-active');
 
     current = index;
+    updateTrackHeight();
   }
 
   function next() {
@@ -134,6 +148,14 @@ export function initHeroSlider() {
       next();
       startAutoRotate();
     }
+  });
+
+  // Set initial track height
+  updateTrackHeight();
+
+  // Update height on resize
+  window.addEventListener('resize', () => {
+    updateTrackHeight();
   });
 
   // Start auto-rotate
