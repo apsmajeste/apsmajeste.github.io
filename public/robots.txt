@@ -1,5 +1,5 @@
-# robots.txt — APS MAJESTE Maison
-# https://apsmajeste.example.com
+# robots.txt — APS MAJESTE
+# https://apsmajeste.in
 
 User-agent: *
 Allow: /
@@ -7,4 +7,4 @@ Disallow: /404.html
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://apsmajeste.example.com/sitemap.xml
+Sitemap: https://apsmajeste.in/sitemap.xml

@@ -64,6 +64,28 @@
   width: 100%;
 }
 
+/* Amazon buy button — distinct accent */
+.btn--amazon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.55rem 1rem;
+  font-size: var(--fs-xs);
+  background: #ff9900;
+  color: #0f1111;
+  border: 0;
+}
+.btn--amazon:hover {
+  background: #e88b00;
+  color: #0f1111;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+.btn--amazon.btn--lg {
+  padding: 1.05rem 2.25rem;
+  font-size: var(--fs-body);
+}
+
 /* ---------- Link with arrow ---------- */
 .link-arrow {
   display: inline-flex;
@@ -269,12 +291,27 @@
   overflow: hidden;
   background: linear-gradient(160deg, #e8d9c0 0%, #c9a97d 50%, #8a6a45 100%);
   box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__media img {
+  /* Brand logo is square (1:1) — use contain so it preserves proportions
+     instead of cover which would crop/stretch it. */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.5rem, 4vw, 3rem);
 }
 .hero__media::after {
   content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 60%);
+  pointer-events: none;
+  z-index: 2;
 }
 .hero__badge {
   position: absolute;
@@ -289,6 +326,7 @@
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
   color: var(--color-text);
+  z-index: 3;
 }
 
 /* ---------- Product Card ---------- */
@@ -362,14 +400,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-3);
   margin-top: var(--space-3);
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
 }
-.product-card__price {
+.product-card__size {
   font-family: var(--font-serif);
-  font-size: var(--fs-h4);
-  font-weight: 500;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
 }
 
 /* ---------- Product Grid ---------- */
@@ -803,6 +843,12 @@
   position: sticky;
   top: calc(var(--header-height) + var(--space-5));
 }
+.product-detail__media img,
+.product-detail__media .ph {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .product-detail__title {
   font-size: var(--fs-h1);
   margin-bottom: var(--space-3);
@@ -814,11 +860,6 @@
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
   margin-bottom: var(--space-4);
-}
-.product-detail__price {
-  font-family: var(--font-serif);
-  font-size: var(--fs-h2);
-  margin-bottom: var(--space-5);
 }
 .product-detail__desc {
   color: var(--color-text-muted);
@@ -848,27 +889,6 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-bottom: var(--space-7);
-}
-.product-detail__qty {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  overflow: hidden;
-}
-.product-detail__qty button {
-  width: 44px;
-  height: 48px;
-  font-size: var(--fs-h4);
-  color: var(--color-text);
-}
-.product-detail__qty input {
-  width: 50px;
-  text-align: center;
-  border: 0;
-  background: transparent;
-  font-size: var(--fs-body);
-  font-weight: 600;
 }
 .product-detail__tabs {
   border-top: 1px solid var(--color-border);

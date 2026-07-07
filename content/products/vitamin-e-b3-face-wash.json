@@ -1,0 +1,36 @@
+{
+  "name": "Vitamin E+B3 Clear & Glow Face Wash",
+  "category": "Face Wash",
+  "categorySlug": "face-wash",
+  "size": "100 ml",
+  "tag": "New",
+  "bg": "sage",
+  "short": "A clarifying face wash with Vitamin E, niacinamide, and AHA+BHA to unclog pores, fight acne, and brighten skin.",
+  "description": "Vitamin E+B3 Clear & Glow is a clarifying daily face wash that combines the brightening power of niacinamide (Vitamin B3) with the soothing, antioxidant protection of Vitamin E. A blend of glycolic, lactic, and salicylic acids gently exfoliates and unclogs pores, while aloe vera keeps skin comfortable. Cellulose beads provide a satisfying physical polish that rinses clean away. Use daily for visibly clearer, smoother, more radiant skin.",
+  "benefits": [
+    "Unclogs pores with AHA+BHA blend (glycolic, lactic, salicylic)",
+    "Niacinamide brightens and Vitamin E protects",
+    "Fights acne and visible blemishes",
+    "Gentle exfoliation with cellulose beads"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Niacinamide (Vitamin B3)",
+    "Vitamin E (Tocopherol)",
+    "Glycolic Acid (AHA)",
+    "Lactic Acid (AHA)",
+    "Salicylic Acid (BHA)",
+    "Aloe Vera Extract",
+    "Cellulose Beads"
+  ],
+  "usage": "Massage a pea-sized amount onto damp skin in circular motions for 30 seconds. Rinse thoroughly with lukewarm water. Use morning and evening. Suitable for combination, oily, and blemish-prone skin.",
+  "pairings": [
+    "acnoshield-face-wash",
+    "kingdom-eau-de-parfum"
+  ],
+  "rating": 4.7,
+  "reviews": 143,
+  "amazonUrl": "https://www.amazon.in/dp/B0GVJR57XB",
+  "image": "/images/products/vitamin-e-b3-face-wash.jpg",
+  "amazonAsin": "B0GVJR57XB"
+}

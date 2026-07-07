@@ -1,0 +1,37 @@
+{
+  "name": "Legend Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "Signature",
+  "bg": "amber",
+  "short": "A timeless amber eau de parfum with a refined, confident character.",
+  "description": "Legend is a timeless amber eau de parfum that opens with a bright, confident burst of bergamot and pink pepper, blooms into a sophisticated heart of lavender and geranium, and settles into a warm, refined base of amber, tonka, and sandalwood. Composed at high concentration for a polished, lasting sillage. Hand-filled and finished in our Udaipur atelier. A scent for those who understand that true elegance never shouts — it simply lingers.",
+  "benefits": [
+    "Timeless amber composition with lavender heart",
+    "High concentration for 10+ hour wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Bergamot Oil",
+    "Pink Pepper",
+    "Lavender Oil",
+    "Geranium",
+    "Amber Absolute",
+    "Tonka Bean Absolute",
+    "Mysore Sandalwood Oil"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A versatile signature scent for day or evening.",
+  "pairings": [
+    "kingdom-eau-de-parfum",
+    "brillia-eau-de-parfum"
+  ],
+  "rating": 4.8,
+  "reviews": 203,
+  "amazonUrl": "https://www.amazon.in/dp/B0F4DB16WD",
+  "image": "/images/products/legend-eau-de-parfum.jpg",
+  "amazonAsin": "B0F4DB16WD"
+}

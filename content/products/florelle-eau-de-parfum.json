@@ -1,0 +1,38 @@
+{
+  "name": "Florelle Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "50 ml",
+  "tag": "",
+  "bg": "blush",
+  "short": "An opulent floral bouquet eau de parfum that captivates with rich, sophisticated notes.",
+  "description": "Florelle is an opulent floral bouquet eau de parfum that opens with a bright flash of bergamot and pink pepper, blooms into a lush heart of rose, jasmine, and tuberose, and settles into a warm, powdery base of iris, musk, and sandalwood. Composed at high concentration for a rich, captivating sillage. Hand-filled and finished in our Udaipur atelier, each 50ml flacon is weighted with a brass-tone cap. For those who believe a fragrance should leave a trail.",
+  "benefits": [
+    "Opulent floral bouquet with rose, jasmine, and tuberose",
+    "High concentration for bold, lasting sillage",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Bergamot Oil",
+    "Pink Pepper",
+    "Rose Absolute",
+    "Jasmine Absolute",
+    "Tuberose Absolute",
+    "Iris Butter",
+    "White Musk",
+    "Mysore Sandalwood Oil"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A statement scent for evenings and special occasions.",
+  "pairings": [
+    "coco-eau-de-parfum",
+    "papaya-face-wash"
+  ],
+  "rating": 4.8,
+  "reviews": 124,
+  "amazonUrl": "https://www.amazon.in/dp/B0DN1D58NM",
+  "image": "/images/products/florelle-eau-de-parfum.jpg",
+  "amazonAsin": "B0DN1D58NM"
+}

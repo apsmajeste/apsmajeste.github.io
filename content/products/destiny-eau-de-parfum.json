@@ -1,0 +1,36 @@
+{
+  "name": "Destiny Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "",
+  "bg": "sage",
+  "short": "A green, aromatic eau de parfum capturing destiny's essence with rich, timeless notes.",
+  "description": "Destiny is a green, aromatic eau de parfum that opens with a crisp burst of galbanum and green leaves, blooms into a heart of fig and violet, and settles into a warm, woody base of vetiver, cedar, and musk. Composed at high concentration for a distinctive, lasting sillage. Hand-filled and finished in our Udaipur atelier. A scent for those who trust the path they're on — quietly confident, unmistakably themselves.",
+  "benefits": [
+    "Green, aromatic composition with fig and violet heart",
+    "High concentration for 10+ hour wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Galbanum",
+    "Green Leaves Accord",
+    "Fig Accord",
+    "Violet Leaf",
+    "Vetiver Oil",
+    "Cedarwood Oil",
+    "White Musk"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A distinctive signature scent for day or evening.",
+  "pairings": [
+    "hocco-eau-de-parfum",
+    "papaya-face-wash"
+  ],
+  "rating": 4.7,
+  "reviews": 67,
+  "amazonUrl": "https://www.amazon.in/s?k=APS+Majeste+Destiny+Eau+de+Parfum",
+  "image": "/images/products/destiny-eau-de-parfum.jpg"
+}

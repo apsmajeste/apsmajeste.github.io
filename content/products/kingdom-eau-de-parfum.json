@@ -1,0 +1,37 @@
+{
+  "name": "Kingdom Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "Signature",
+  "bg": "noir",
+  "short": "A regal eau de parfum embodying sophistication and timeless allure.",
+  "description": "Kingdom is a regal eau de parfum that opens with a majestic burst of saffron and bergamot, blooms into a heart of rose and damask plum, and settles into a rich, regal base of oud, leather, and amber. Composed at high concentration for an authoritative, commanding sillage that lasts 12+ hours. Hand-filled and finished in our Udaipur atelier. A scent for those who carry themselves like royalty — quietly assured, impossible to ignore.",
+  "benefits": [
+    "Regal composition with saffron, oud, and leather",
+    "High concentration for 12+ hour wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Kashmiri Saffron",
+    "Bergamot Oil",
+    "Rose Absolute",
+    "Damask Plum",
+    "Oud Oil",
+    "Leather Accord",
+    "Amber Absolute"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A commanding scent for evenings and special occasions.",
+  "pairings": [
+    "legend-eau-de-parfum",
+    "vitamin-e-b3-face-wash"
+  ],
+  "rating": 4.9,
+  "reviews": 156,
+  "amazonUrl": "https://www.amazon.in/dp/B0F4D78NJB",
+  "image": "/images/products/kingdom-eau-de-parfum.jpg",
+  "amazonAsin": "B0F4D78NJB"
+}

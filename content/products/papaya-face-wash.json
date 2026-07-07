@@ -1,0 +1,33 @@
+{
+  "name": "Papaya Glow Face Wash",
+  "category": "Face Wash",
+  "categorySlug": "face-wash",
+  "size": "100 ml",
+  "tag": "New",
+  "bg": "cream",
+  "short": "A paraben-free papaya face wash with glycerin that removes dirt and oil while leaving skin fresh, balanced, and glowing.",
+  "description": "Papaya Glow is a daily face wash that harnesses the natural enzymes of papaya to gently dissolve impurities, dead skin, and excess oil. Glycerin draws in moisture to keep skin balanced and comfortable, while the rich-foam, easy-rinse formula makes cleansing a small daily pleasure. Paraben-free and gentle enough for all skin types, including sensitive. Skin feels fresh, clear, and softly glowing — never tight.",
+  "benefits": [
+    "Papaya enzymes gently dissolve impurities and dead skin",
+    "Glycerin maintains skin's natural moisture balance",
+    "Rich foam, easy-rinse formula",
+    "Paraben-free and suitable for all skin types"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Papaya Extract (Carica Papaya)",
+    "Glycerin",
+    "Cocamidopropyl Betaine (Coconut-derived)",
+    "Citric Acid"
+  ],
+  "usage": "Massage a pea-sized amount onto damp skin in circular motions for 30 seconds. Rinse thoroughly with lukewarm water. Use morning and evening. Suitable for all skin types.",
+  "pairings": [
+    "acnoshield-face-wash",
+    "florelle-eau-de-parfum"
+  ],
+  "rating": 4.6,
+  "reviews": 87,
+  "amazonUrl": "https://www.amazon.in/dp/B0GPK83SFC",
+  "image": "/images/products/papaya-face-wash.jpg",
+  "amazonAsin": "B0GPK83SFC"
+}

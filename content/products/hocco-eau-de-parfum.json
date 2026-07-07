@@ -1,0 +1,36 @@
+{
+  "name": "Hocco Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "",
+  "bg": "noir",
+  "short": "A sophisticated eau de parfum blending modern elegance with timeless depth in 100ml.",
+  "description": "Hocco is a sophisticated eau de parfum that opens with a crisp, aromatic burst of bergamot and lavender, blooms into a spicy heart of cardamom and geranium, and settles into a warm, woody base of oud, sandalwood, and amber. Composed at high concentration for a refined, lasting sillage. Hand-filled and finished in our Udaipur atelier. A scent that moves easily from boardroom to evening — modern, confident, unmistakably elegant.",
+  "benefits": [
+    "Sophisticated aromatic-woody composition",
+    "High concentration for 10+ hour wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Bergamot Oil",
+    "Lavender Oil",
+    "Cardamom",
+    "Geranium",
+    "Oud Oil",
+    "Mysore Sandalwood Oil",
+    "Amber Absolute"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A versatile signature scent for day or evening.",
+  "pairings": [
+    "destiny-eau-de-parfum",
+    "vitamin-e-b3-face-wash"
+  ],
+  "rating": 4.7,
+  "reviews": 89,
+  "amazonUrl": "https://www.amazon.in/s?k=APS+Majeste+Hocco+Eau+de+Parfum",
+  "image": "/images/products/hocco-eau-de-parfum.jpg"
+}

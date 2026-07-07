@@ -1,0 +1,36 @@
+{
+  "name": "Dawn Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "New",
+  "bg": "rose",
+  "short": "A serene floral-amber eau de parfum capturing the soft, hopeful beauty of dawn in 100ml.",
+  "description": "Dawn is a serene floral-amber eau de parfum that captures the quiet, hopeful beauty of first light. The composition opens with a dewy flash of pear and bergamot, blooms into a heart of peony and rose, and settles into a soft, warm base of amber and musk. Composed at high concentration for a gentle, lasting sillage that stays close to the skin. Hand-filled and finished in our Udaipur atelier. Designed as a morning ritual — for the person who begins each day with intention.",
+  "benefits": [
+    "Serene floral-amber composition with dewy pear opening",
+    "High concentration for intimate, lasting wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Pear Accord",
+    "Bergamot Oil",
+    "Peony Absolute",
+    "Rose Absolute",
+    "Amber Absolute",
+    "White Musk"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A beautiful morning scent, especially lovely in spring and summer.",
+  "pairings": [
+    "florelle-eau-de-parfum",
+    "detan-face-wash"
+  ],
+  "rating": 4.7,
+  "reviews": 92,
+  "amazonUrl": "https://www.amazon.in/dp/B0F4D76K87",
+  "image": "/images/products/dawn-eau-de-parfum.jpg",
+  "amazonAsin": "B0F4D76K87"
+}

@@ -1,29 +1,36 @@
 # ============================================================
 # Decap CMS configuration for APS MAJESTE
 # ============================================================
-# Authentication: DecapBridge (free OAuth proxy for GitHub Pages)
-#   1. Sign up at https://decapbridge.com
-#   2. Add a site with:
-#      - Git provider: GitHub
-#      - Git repository: apsmajeste/apsmajeste.github.io
-#      - Git access token: create at https://github.com/settings/tokens
-#        (fine-grained, Contents read+write, Pull requests read+write)
-#      - Decap CMS login URL: https://apsmajeste.github.io/admin/index.html
-#      - Auth type: Classic
-#   3. Copy the generated base_url and app_id below
-#   4. Visit https://apsmajeste.github.io/admin/ and sign in
+# Setup:
+#   1. Create a GitHub OAuth App:
+#      GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
+#        - Application name: APS MAJESTE Admin
+#        - Homepage URL: https://<your-username>.github.io/<repo>/
+#        - Authorization callback URL: https://<your-username>.github.io/<repo>/admin/
+#   2. Copy the Client ID and paste it below as `app_id`.
+#   3. Set `repo` to your GitHub repo path (e.g. "your-username/apsmajeste").
+#   4. Visit /admin/ and sign in with GitHub.
+#
+# How saves work:
+#   Every product edit commits to the `main` branch of your repo.
+#   This triggers the GitHub Actions workflow (.github/workflows/deploy.yml),
+#   which rebuilds the site and deploys to GitHub Pages. Live in ~30s.
+#
+# NOTE: APS MAJESTE does NOT sell directly from the website.
+# Each product links to Amazon.in for purchase. No prices are shown on-site.
 # ============================================================
 
 backend:
   name: github
-  repo: apsmajeste/apsmajeste.github.io
+  repo: your-username/apsmajeste           # ← CHANGE THIS to your repo
   branch: main
-  base_url: https://auth.decapbridge.com
-  auth_endpoint: auth
-  app_id: CHANGE_ME_FROM_DECAPBRIDGE_DASHBOARD
+  base_url: https://github.com
+  auth_endpoint: login/oauth/authorize
+  app_id: Iv1.xxxxxxxxxxxxxxxx             # ← CHANGE THIS to your OAuth App Client ID
+  auth_type: pkce                          # PKCE = no proxy server needed
 
 # Site URL used for canonical links in the CMS UI
-site_url: https://apsmajeste.github.io
+site_url: https://your-username.github.io/apsmajeste  # ← CHANGE THIS
 
 # Show a publish/preview workflow
 publish_mode: editorial_workflow
@@ -48,28 +55,30 @@ collections:
     summary: "{{name}} · {{category}} · {{size}}"
     sortable_fields: [name, category]
     view_filters:
+      - label: "Face Wash"
+        field: categorySlug
+        pattern: "face-wash"
+      - label: "Perfumes"
+        field: categorySlug
+        pattern: "perfumes"
       - label: "Bestsellers"
         field: tag
         pattern: "Bestseller"
       - label: "New arrivals"
         field: tag
         pattern: "New"
-      - label: "Fragrances"
-        field: categorySlug
-        pattern: "fragrances"
     fields:
       # Basic info
-      - { name: "name", label: "Product Name", widget: "string", hint: "Full display name, e.g. Rose Damascena Elixir" }
-      - { name: "category", label: "Category (display)", widget: "string", hint: "Human-readable, e.g. Serum, Face Wash, Perfume" }
+      - { name: "name", label: "Product Name", widget: "string", hint: "Full display name, e.g. Neroli Radiance Face Wash" }
+      - { name: "category", label: "Category (display)", widget: "string", hint: "Human-readable, e.g. Face Wash, Perfume" }
       - name: "categorySlug"
         label: "Category (filter)"
         widget: "select"
         hint: "Used by the filter chips on the products page"
         options:
-          - { label: "Perfumes & Fragrances", value: "fragrances" }
-          - { label: "Face Wash & Cleansers", value: "cleansers" }
-      - { name: "size", label: "Size", widget: "string", hint: "e.g. 30 ml, 50 ml, 150 ml" }
-      - { name: "amazonUrl", label: "Amazon Product URL", widget: "string", hint: "Full Amazon listing URL, e.g. https://www.amazon.com/dp/B0XXXXXXXX" }
+          - { label: "Face Wash", value: "face-wash" }
+          - { label: "Perfume / Fragrance", value: "perfumes" }
+      - { name: "size", label: "Size", widget: "string", hint: "e.g. 150 ml, 50 ml" }
       - name: "tag"
         label: "Badge / Tag"
         widget: "select"
@@ -92,6 +101,13 @@ collections:
           - { label: "Noir (dark)", value: "noir" }
           - { label: "Blush (soft pink)", value: "blush" }
 
+      # Amazon purchase link (replaces direct pricing/e-commerce)
+      - name: "amazonUrl"
+        label: "Amazon India URL"
+        widget: "string"
+        required: true
+        hint: "Full Amazon.in product URL or search URL. The 'Buy on Amazon' button on the product card and detail page links here."
+
       # Descriptions
       - { name: "short", label: "Short description", widget: "text", hint: "One-line summary shown on the product card (max ~160 chars)" }
       - { name: "description", label: "Full description", widget: "text", hint: "Full marketing copy shown on the product detail page" }
@@ -113,7 +129,7 @@ collections:
       # Usage
       - { name: "usage", label: "How to use", widget: "text", hint: "Application instructions shown on the detail page" }
 
-      # Relations — pair with other products
+      # Relations — pair with other products (optional)
       - name: "pairings"
         label: "Pairs with"
         widget: "relation"
@@ -123,9 +139,9 @@ collections:
         display_fields: ["name"]
         multiple: true
         required: false
-        hint: "Select other products that complement this one (shown in the 'Complete your ritual' section)"
+        hint: "Select other products that complement this one (shown in the 'You may also like' section)"
 
-      # Ratings (auto-filled from your review provider — edit only if needed)
+      # Ratings (auto-filled from Amazon reviews — edit only if needed)
       - { name: "rating", label: "Rating (0–5)", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1, default: 4.8 }
       - { name: "reviews", label: "Review count", widget: "number", value_type: "int", min: 0, step: 1, default: 0 }
 
@@ -154,3 +170,4 @@ collections:
           - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
           - { name: "pinterestUrl", label: "Pinterest URL", widget: "string", required: false }
           - { name: "tiktokUrl", label: "TikTok URL", widget: "string", required: false }
+          - { name: "amazonStore", label: "Amazon India store URL", widget: "string" }

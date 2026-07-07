@@ -1,0 +1,34 @@
+{
+  "name": "Vitamin C Glow Face Wash",
+  "category": "Face Wash",
+  "categorySlug": "face-wash",
+  "size": "100 ml",
+  "tag": "Bestseller",
+  "bg": "rose",
+  "short": "A brightening Vitamin C face wash with black turmeric, lemon extract, and niacinamide for an even, radiant tone.",
+  "description": "Vitamin C Glow is a brightening daily face wash that pairs Vitamin C with black turmeric (kaempferia galanga) — an Ayurvedic botanical long valued for its clarifying properties. Lemon extract boosts radiance, while niacinamide helps even tone and fade the look of dark spots over time. The sulfate-free, paraben-free formula is gentle enough for daily use on all skin types. Skin looks brighter, fresher, and more luminous with every cleanse.",
+  "benefits": [
+    "Brightens with Vitamin C and lemon extract",
+    "Black turmeric clarifies — an Ayurvedic-inspired ingredient",
+    "Niacinamide helps even tone and fade dark spots",
+    "Sulfate-free, paraben-free, artificial colour-free"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Vitamin C (Ascorbic Acid)",
+    "Black Turmeric Extract (Kaempferia Galanga)",
+    "Lemon Extract",
+    "Niacinamide (Vitamin B3)",
+    "Glycerin"
+  ],
+  "usage": "Massage a pea-sized amount onto damp skin in circular motions for 30 seconds. Rinse thoroughly with lukewarm water. Use morning and evening. For best results, follow with a Vitamin C serum and SPF during the day.",
+  "pairings": [
+    "detan-face-wash",
+    "brillia-eau-de-parfum"
+  ],
+  "rating": 4.7,
+  "reviews": 256,
+  "amazonUrl": "https://www.amazon.in/dp/B0GP6WTT69",
+  "image": "/images/products/vitamin-c-face-wash.jpg",
+  "amazonAsin": "B0GP6WTT69"
+}

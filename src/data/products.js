@@ -9,13 +9,16 @@
    files eagerly and assembles the PRODUCTS array. No runtime
    fetching, no API calls — the catalog is baked into the bundle.
 
+   NOTE: APS MAJESTE does not sell directly from this site.
+   Each product has an `amazonUrl` field linking to Amazon.in
+   where customers can purchase. No prices are shown on-site.
+
    To add a product:
      - Use the admin UI at /admin/, OR
      - Drop a new <slug>.json file into content/products/
    ============================================================ */
 
 // Eagerly import every product JSON file at build time.
-// Returns: { '/content/products/foo.json': { name: 'Foo', ... }, ... }
 const productModules = import.meta.glob('/content/products/*.json', {
   import: 'default',
   eager: true,
@@ -34,11 +37,10 @@ export const PRODUCTS = Object.entries(productModules)
 
 export const CATEGORIES = [
   { slug: 'all', label: 'All' },
-  { slug: 'fragrances', label: 'Perfumes' },
-  { slug: 'cleansers', label: 'Face Wash' },
+  { slug: 'face-wash', label: 'Face Wash' },
+  { slug: 'perfumes', label: 'Perfumes' },
 ];
 
 export function getProduct(slug) {
   return PRODUCTS.find((p) => p.slug === slug) || null;
 }
-

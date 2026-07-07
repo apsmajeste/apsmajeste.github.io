@@ -1,0 +1,34 @@
+{
+  "name": "De-Tan Radiance Cleanse Face Wash",
+  "category": "Face Wash",
+  "categorySlug": "face-wash",
+  "size": "100 ml",
+  "tag": "",
+  "bg": "amber",
+  "short": "A de-tan face wash with saffron, aloe, and an AHA+BHA blend to remove sun-induced dullness and brighten skin.",
+  "description": "De-Tan Radiance Cleanse is a daily brightening face wash designed to lift sun-induced tan, pollution, and dullness. A blend of glycolic and salicylic acids gently exfoliates, while Kashmiri saffron — prized for centuries in Ayurveda for its complexion-evening properties — helps revive radiance. Aloe vera soothes and hydrates so skin feels clean and comfortable, never tight. Free from silicone, phosphate, GMO, and artificial colour. Use daily for visibly brighter, more even-toned skin.",
+  "benefits": [
+    "Removes sun-induced tan and dullness with AHA+BHA blend",
+    "Brightens with Kashmiri saffron extract",
+    "Aloe vera soothes and hydrates",
+    "Free from silicone, phosphate, GMO, and artificial colour"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Glycolic Acid (AHA)",
+    "Salicylic Acid (BHA)",
+    "Kashmiri Saffron Extract",
+    "Aloe Vera Extract",
+    "Glycerin"
+  ],
+  "usage": "Massage a pea-sized amount onto damp skin in circular motions for 30 seconds. Rinse thoroughly with lukewarm water. Use morning and evening. Best suited for dull, tanned, or uneven skin.",
+  "pairings": [
+    "vitamin-c-face-wash",
+    "dawn-eau-de-parfum"
+  ],
+  "rating": 4.6,
+  "reviews": 198,
+  "amazonUrl": "https://www.amazon.in/dp/B0GS8YW1GG",
+  "image": "/images/products/detan-face-wash.jpg",
+  "amazonAsin": "B0GS8YW1GG"
+}

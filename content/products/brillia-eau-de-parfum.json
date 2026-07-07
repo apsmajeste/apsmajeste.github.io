@@ -1,0 +1,36 @@
+{
+  "name": "Brillia Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "Signature",
+  "bg": "amber",
+  "short": "A luminous amber eau de parfum that exudes sophistication and timeless elegance.",
+  "description": "Brillia is a luminous amber eau de parfum that opens with a bright flash of bergamot and pink pepper, blooms into a heart of jasmine and orange blossom, and settles into a warm, golden base of amber, vanilla, and sandalwood. Composed at high concentration for an intimate, lasting sillage. Hand-filled and finished in our Udaipur atelier, each 100ml flacon is weighted with a brass-tone cap. A scent for those who carry their own light.",
+  "benefits": [
+    "Luminous amber composition with floral heart",
+    "High concentration for 10+ hour wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Bergamot Oil",
+    "Pink Pepper",
+    "Jasmine Absolute",
+    "Orange Blossom",
+    "Amber Absolute",
+    "Vanilla",
+    "Mysore Sandalwood Oil"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A versatile signature scent for day or evening.",
+  "pairings": [
+    "dawn-eau-de-parfum",
+    "vitamin-c-face-wash"
+  ],
+  "rating": 4.8,
+  "reviews": 178,
+  "amazonUrl": "https://www.amazon.in/s?k=APS+Majeste+Brillia+Eau+de+Parfum",
+  "image": "/images/products/brillia-eau-de-parfum.jpg"
+}

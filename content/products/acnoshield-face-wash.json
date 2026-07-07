@@ -1,0 +1,35 @@
+{
+  "name": "AcnoShield Face Wash",
+  "category": "Face Wash",
+  "categorySlug": "face-wash",
+  "size": "100 ml",
+  "tag": "Bestseller",
+  "bg": "noir",
+  "short": "A clarifying acne-control face wash with salicylic acid, niacinamide, and AHA+BHA to unclog pores and reduce oil.",
+  "description": "AcnoShield is a clarifying acne-control face wash formulated for oily, combination, and blemish-prone skin. Salicylic acid (BHA) penetrates pores to dissolve excess sebum and dead skin, while glycolic and lactic acids (AHA) gently exfoliate the surface. Niacinamide helps even tone and calm visible redness, and aloe vera keeps skin comfortable — never stripped. Dissolving exfoliation beads give a satisfying physical polish without microtears. Use daily for visibly clearer, smoother skin in two to four weeks.",
+  "benefits": [
+    "Fights acne with salicylic acid (BHA) and AHA blend",
+    "Unclogs pores and reduces excess oil without over-drying",
+    "Niacinamide calms redness and evens skin tone",
+    "Gentle exfoliation with dissolving beads — no microtears"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Salicylic Acid (BHA)",
+    "Glycolic Acid (AHA)",
+    "Lactic Acid (AHA)",
+    "Niacinamide (Vitamin B3)",
+    "Aloe Vera Extract",
+    "Dissolving Exfoliation Beads"
+  ],
+  "usage": "Massage a pea-sized amount onto damp skin in circular motions for 30 seconds. Rinse thoroughly with lukewarm water. Use morning and evening. Follow with moisturizer. Suitable for oily, combination, and acne-prone skin.",
+  "pairings": [
+    "vitamin-e-b3-face-wash",
+    "black-fury-eau-de-parfum"
+  ],
+  "rating": 4.7,
+  "reviews": 412,
+  "amazonUrl": "https://www.amazon.in/dp/B0GWMPBDHK",
+  "image": "/images/products/acnoshield-face-wash.jpg",
+  "amazonAsin": "B0GWMPBDHK"
+}

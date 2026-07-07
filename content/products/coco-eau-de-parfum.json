@@ -1,0 +1,37 @@
+{
+  "name": "Coco Eau de Parfum",
+  "category": "Perfume",
+  "categorySlug": "perfumes",
+  "size": "100 ml",
+  "tag": "New",
+  "bg": "noir",
+  "short": "A warm, gourmand eau de parfum weaving coconut, vanilla, and warm spices into a cozy, irresistible signature.",
+  "description": "Coco is a warm, gourmand eau de parfum that opens with a creamy flash of coconut and bergamot, blooms into a heart of jasmine and warm spices, and settles into a cozy, irresistible base of vanilla, tonka, and sandalwood. Composed at high concentration for a rich, comforting sillage that lasts 10+ hours. Hand-filled and finished in our Udaipur atelier. A scent for cold evenings, warm conversations, and second helpings — the perfume equivalent of a favorite sweater.",
+  "benefits": [
+    "Warm gourmand composition with coconut and vanilla",
+    "High concentration for 10+ hour wear",
+    "Weighted glass flacon with brass-tone cap",
+    "Hand-finished and numbered in Udaipur"
+  ],
+  "ingredients": [
+    "Alcohol Denat.",
+    "Parfum (Fragrance)",
+    "Coconut Accord",
+    "Bergamot Oil",
+    "Jasmine Absolute",
+    "Warm Spices Accord",
+    "Vanilla Bourbon Extract",
+    "Tonka Bean Absolute",
+    "Mysore Sandalwood Oil"
+  ],
+  "usage": "Spritz onto pulse points — wrists, neck, behind the ears — from a distance of 6 inches. Do not rub. Reapply as desired. A beautiful scent for cooler weather and evenings.",
+  "pairings": [
+    "florelle-eau-de-parfum",
+    "dawn-eau-de-parfum"
+  ],
+  "rating": 4.7,
+  "reviews": 78,
+  "amazonUrl": "https://www.amazon.in/dp/B0F4DDG3SB",
+  "image": "/images/products/coco-eau-de-parfum.jpg",
+  "amazonAsin": "B0F4DDG3SB"
+}
