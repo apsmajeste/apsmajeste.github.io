@@ -211,7 +211,6 @@
 .brand__logo-img {
   height: 44px;
   width: auto;
-  aspect-ratio: 1 / 1;
   object-fit: contain;
   border-radius: var(--radius-sm);
   display: block;
@@ -561,10 +560,10 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--space-7);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
   height: 100%;
 }
 .section--dark .testimonial {
@@ -591,8 +590,9 @@
   margin-top: auto;
 }
 .testimonial__avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--color-accent-soft);
   display: inline-flex;
@@ -604,6 +604,21 @@
 }
 .testimonial__name { font-weight: 600; font-size: var(--fs-small); }
 .testimonial__role { color: var(--color-text-muted); font-size: var(--fs-xs); }
+
+/* On wide desktops where 4 testimonials sit in a single row,
+   slightly tighten the quote size so all four fit comfortably. */
+@media (min-width: 1024px) {
+  .testimonial { padding: var(--space-5); gap: var(--space-3); }
+  .testimonial__quote { font-size: 1.0625rem; }
+  .testimonial__avatar { width: 36px; height: 36px; font-size: var(--fs-body); }
+}
+
+/* "Coming Soon at Offline Super Mart" heading — keep on a single line on
+   desktop where there's room; allow wrapping on tablet/mobile. */
+.coming-soon-heading { white-space: normal; }
+@media (min-width: 900px) {
+  .coming-soon-heading { white-space: nowrap; }
+}
 
 /* ---------- FAQ accordion ---------- */
 .faq {

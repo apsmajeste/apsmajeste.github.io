@@ -32,18 +32,18 @@
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* Testimonial grid — supports 6+ testimonials.
-   1 col mobile · 2 col tablet · 3 col desktop. */
+/* Testimonial grid — 4 reviews in a single horizontal row on desktop,
+   2 columns on tablet, 1 column on mobile. */
 .testimonial-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 @media (min-width: 600px) {
   .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (min-width: 900px) {
-  .testimonial-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6) var(--space-5); }
+@media (min-width: 1024px) {
+  .testimonial-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-5) var(--space-4); }
 }
 
 /* ---------- Reveal on scroll ---------- */

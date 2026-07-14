@@ -72,6 +72,5 @@ export const FOOTER_LINKS = {
     { href: 'privacy-policy.html', label: 'Privacy Policy' },
     { href: 'terms.html', label: 'Terms & Conditions' },
     { href: 'contact.html', label: 'Customer Care' },
-    { href: 'admin/', label: 'Admin' },
   ],
 };
