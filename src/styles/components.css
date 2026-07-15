@@ -1682,30 +1682,36 @@
   pointer-events: auto;
   z-index: 1;
 }
+/* Both slide types target the same height so switching between the
+   text slide and the image banners never causes a large visible jump.
+   The image slide has a fixed height (image is cropped via object-fit);
+   the text slide uses the same value as a min-height so long copy on
+   small screens can still grow instead of being clipped. */
+.hero-slider__slide--text,
+.hero-slider__slide--image {
+  min-height: clamp(360px, 42vw, 640px);
+}
+.hero-slider__slide--image {
+  height: clamp(360px, 42vw, 640px);
+}
 .hero-slider__slide--text {
-  padding-block: clamp(4rem, 10vw, 9rem) clamp(3rem, 7vw, 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-6);
 }
 .hero-slider__slide--image {
   width: 100%;
-  /* No forced aspect-ratio — let the image's natural aspect ratio
-     define the slide height so the banner is never cropped.
-     A min-height keeps it visible on narrow screens; a max-height
-     caps it on very wide / 4K displays. */
-  min-height: 220px;
   overflow: hidden;
   background: var(--color-surface-alt);
 }
 .hero-slider__slide--image img {
   display: block;
   width: 100%;
-  height: auto;            /* maintain natural aspect ratio — NO cropping */
-  max-height: 70vh;        /* cap on huge screens */
-  object-fit: contain;     /* if max-height kicks in, letterbox rather than crop */
+  height: 100%;
+  object-fit: contain;     /* show the full image, no cropping — letterbox if needed */
   object-position: center;
 }
-
-/* @media (max-width: 768px) block was here previously and forced a 4/3
-   aspect ratio that cropped the wide hero banners on mobile. Removed. */
 
 /* Navigation dots */
 .hero-slider__dots {
